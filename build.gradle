@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.vaadin:vaadin-spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation group: 'com.google.code.gson', name: 'gson', version: '2.7'
+    implementation group: 'com.vaadin', name: 'vaadin-lumo-theme', version: '23.0.9'
     runtimeOnly 'com.h2database:h2'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

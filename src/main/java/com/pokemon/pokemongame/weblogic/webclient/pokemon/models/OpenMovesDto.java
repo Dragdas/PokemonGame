@@ -1,4 +1,4 @@
-package com.pokemon.pokemongame.webclient.pokemon.dto;
+package com.pokemon.pokemongame.weblogic.webclient.pokemon.models;
 
 import lombok.Getter;
 

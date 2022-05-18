@@ -1,8 +1,8 @@
-package com.pokemon.pokemongame.controller;
+package com.pokemon.pokemongame.weblogic.controller;
 
 
-import com.pokemon.pokemongame.model.PokemonDto;
-import com.pokemon.pokemongame.service.PokemonService;
+import com.pokemon.pokemongame.weblogic.model.PokemonDto;
+import com.pokemon.pokemongame.weblogic.service.PokemonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

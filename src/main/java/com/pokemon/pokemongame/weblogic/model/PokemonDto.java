@@ -1,4 +1,4 @@
-package com.pokemon.pokemongame.model;
+package com.pokemon.pokemongame.weblogic.model;
 
 
 import lombok.Builder;
