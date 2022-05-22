@@ -40,6 +40,9 @@ public class PokemonClient {
                     .spriteBack(response.getSprites().getBack_default())
                     .spriteFront(response.getSprites().getFront_default())
                     .moves(moves)
+                    .base_experience(response.getBase_experience())
+                    .height(response.getHeight())
+                    .weight(response.getWeight())
                     .build();
 
         }catch (Exception e){

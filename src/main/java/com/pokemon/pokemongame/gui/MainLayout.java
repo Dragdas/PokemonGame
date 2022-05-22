@@ -2,13 +2,14 @@ package com.pokemon.pokemongame.gui;
 
 
 import com.pokemon.pokemongame.gui.about.AboutView;
-import com.pokemon.pokemongame.gui.helloworld.HelloWorldView;
+import com.pokemon.pokemongame.gui.profile.Profile;
 import com.pokemon.pokemongame.gui.imagelist.ImageListView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.NpmPackage;
+import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.html.Footer;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
@@ -20,9 +21,12 @@ import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 
+
 /**
  * The main view is a top-level placeholder for other views.
  */
+//@StyleSheet("/frontend/main-layout.css")
+@StyleSheet("css/Style.css")
 public class MainLayout extends AppLayout {
 
     /**
@@ -69,7 +73,7 @@ public class MainLayout extends AppLayout {
 
     public MainLayout() {
         setPrimarySection(Section.DRAWER);
-        addToNavbar(true, createHeaderContent());
+        addToNavbar( true, createHeaderContent());
         addToDrawer(createDrawerContent());
     }
 
@@ -83,8 +87,10 @@ public class MainLayout extends AppLayout {
         viewTitle.addClassNames("view-title");
 
         Header header = new Header(toggle, viewTitle);
+
         header.addClassNames("view-header");
-        return header;
+
+    return header;
     }
 
     private Component createDrawerContent() {
@@ -116,7 +122,7 @@ public class MainLayout extends AppLayout {
 
     private MenuItemInfo[] createMenuItems() {
         return new MenuItemInfo[]{ //
-                new MenuItemInfo("Hello World", "la la-globe", HelloWorldView.class), //
+                new MenuItemInfo("Profile", "la la-globe", Profile.class), //
 
                 new MenuItemInfo("About", "la la-file", AboutView.class), //
 

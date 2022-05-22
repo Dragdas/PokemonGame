@@ -1,0 +1,138 @@
+
+
+
+[slot='drawer'] nav a .la {
+    margin-top: calc(0.1875rem * 0.5);
+}
+
+[slot='drawer'] nav a::before {
+    border-radius: 0px;
+    bottom: calc(0.1875rem * 0.5);
+    content: '';
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: calc(0.1875rem * 0.5);
+    transition: background-color 140ms;
+}
+
+[slot='drawer'] nav a[highlight] {
+    color: rgba(29, 117, 231, 0.99);
+}
+
+[slot='drawer'] nav a[highlight]::before {
+    background-color: hsla(214, 90%, 52%, 0.15);
+}
+
+
+
+.menu-item-link {
+    display: flex;
+    margin-left: 0.3125rem;
+    margin-right: 0.3125rem;
+    padding: 0.3125rem;
+    position: relative;
+    color: rgba(25, 57, 82, 0.7);
+}
+
+.menu-item-text {
+    font-weight: 500;
+    font-size: 1.25rem;
+}
+
+.menu-item-icon {
+    font-size: 1.25rem;
+}
+
+
+
+/*
+view title above main screen
+*/
+.view-title {
+    color: hsla(214, 96%, 96%, 0.9);
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+.view-header {
+    align-items: center;
+    background-color:  hsl(180, 2%, 58%);
+    border-bottom: 1px solid;
+    border-color: hsl(214, 32%, 66%);
+    box-sizing: border-box;
+    display: flex;
+    height: 1.875rem;
+    width: 100%;
+}
+/*
+Left panel show/hide button
+*/
+.view-toggle {
+    color: hsla(214, 96%, 96%, 0.9);
+}
+
+/*
+Text above left panel
+*/
+.app-name {
+    color: hsla(214, 96%, 96%, 0.9);
+    border-color: hsl(214, 32%, 66%) ;
+    align-items: center;
+    display: flex;
+    height: 1.875rem;
+    margin: 0;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size:  1.5rem;
+}
+
+/*
+Left panel
+*/
+.drawer-section {
+    background-color:  hsl(180, 2%, 58%);
+    border-color: hsl(214, 32%, 66%) ;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    min-height: 100%;
+}
+
+/*
+Left panel navigation elements
+*/
+[slot='drawer'] nav a {
+
+    color: hsla(214, 96%, 96%, 0.9);
+    border-color: hsl(214, 32%, 66%) ;
+    text-decoration: none;
+    transition: color 140ms;
+}
+
+
+
+.menu-item-container {
+    border-bottom: 1px solid;
+    border-color: hsl(214, 32%, 66%) ;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.navigation-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer {
+    align-items: center;
+    display: flex;
+    margin-bottom: 0.3125rem;
+    margin-top: 0.3125rem;
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    padding-bottom:0.1875rem ;
+    padding-top: 0.1875rem;
+}
