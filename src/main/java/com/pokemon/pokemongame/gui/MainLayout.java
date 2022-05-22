@@ -2,7 +2,7 @@ package com.pokemon.pokemongame.gui;
 
 
 import com.pokemon.pokemongame.gui.about.AboutView;
-import com.pokemon.pokemongame.gui.profile.Profile;
+import com.pokemon.pokemongame.gui.profile.Pokedex;
 import com.pokemon.pokemongame.gui.imagelist.ImageListView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -122,7 +122,7 @@ public class MainLayout extends AppLayout {
 
     private MenuItemInfo[] createMenuItems() {
         return new MenuItemInfo[]{ //
-                new MenuItemInfo("Profile", "la la-globe", Profile.class), //
+                new MenuItemInfo("PokeDEX", "la la-globe", Pokedex.class), //
 
                 new MenuItemInfo("About", "la la-file", AboutView.class), //
 

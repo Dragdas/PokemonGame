@@ -1,5 +1,6 @@
 package com.pokemon.pokemongame.weblogic.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.pokemon.pokemongame.weblogic.model.PokemonDto;
 import com.pokemon.pokemongame.weblogic.webclient.pokemon.PokemonClient;
 import lombok.RequiredArgsConstructor;
@@ -11,7 +12,15 @@ public class PokemonService {
 
     private final PokemonClient pokemonClient;
 
-    public PokemonDto getPokemon(String id) {
-        return pokemonClient.getPokemon(id);
+    public PokemonDto getPokemon(String id) throws JsonProcessingException {
+
+        try {
+            return pokemonClient.getPokemon(id);
+        }catch (JsonProcessingException e){
+            throw e;
+        }
+
+
+
     }
 }

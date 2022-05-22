@@ -2,28 +2,32 @@ package com.pokemon.pokemongame.gui.profile;
 
 
 import com.pokemon.pokemongame.gui.MainLayout;
+import com.pokemon.pokemongame.weblogic.model.PokemonDto;
+import com.pokemon.pokemongame.weblogic.service.PokemonService;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
 import com.vaadin.flow.component.formlayout.FormLayout;
 import com.vaadin.flow.component.formlayout.FormLayout.ResponsiveStep;
 import com.vaadin.flow.component.html.Image;
+import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouteAlias;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
-@PageTitle("Profile")
-@Route(value = "hello", layout = MainLayout.class)
+@PageTitle("Pokedex")
+@Route(value = "pokedex", layout = MainLayout.class)
 @RouteAlias(value = "", layout = MainLayout.class)
 @StyleSheet("css/Style.css")
-public class Profile extends HorizontalLayout {
+public class Pokedex extends HorizontalLayout {
 
-    private TextField name;
-    private Button sayHello;
+    @Autowired
+    private PokemonService pokemonService;
 
-    public Profile() {
+    public Pokedex() {
 
         Image imageFront = new Image("https://www.shareicon.net/data/128x128/2016/08/01/640216_go_512x512.png", "pokeball");
         Image imageBack = new Image("https://www.shareicon.net/data/128x128/2016/08/01/640216_go_512x512.png", "pokeball");
@@ -45,33 +49,31 @@ public class Profile extends HorizontalLayout {
                 new ResponsiveStep("100px", 2)
         );
 
+        TextField idInpuTextField = new TextField("Pokemon ID");
+        Button getPokemonButton = new Button("Find Pokemon");
+        getPokemonButton.addClickListener(e -> {
+            try {
+                String id = idInpuTextField.getValue();
+                PokemonDto pokemon = pokemonService.getPokemon(id);
+
+                imageFront.setSrc(pokemon.getSpriteFront());
+                imageBack.setSrc(pokemon.getSpriteBack());
+                pokemonId.setValue(Integer.toString(pokemon.getId()));
+                pokemonName.setValue(pokemon.getName());
+                pokemonWeight.setValue(Integer.toString(pokemon.getWeight()));
+                pokemonHeight.setValue(Integer.toString(pokemon.getHeight()));
 
 
+            }catch (Exception exception){
+                Notification.show("Invalid ID number!");
+            }
 
-
-
-
-
-
-
-
-
-
-
-        name = new TextField("Your name");
-        sayHello = new Button("Say hello");
-        sayHello.addClickListener(e -> {
-            imageFront.setSrc("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/15.png");
-            imageBack.setSrc("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/15.png");
         });
 
         setMargin(true);
-        setVerticalComponentAlignment(Alignment.END, name, sayHello);
+        setVerticalComponentAlignment(Alignment.END, idInpuTextField, getPokemonButton);
 
-
-
-
-        add( formLayout, name, sayHello);
+        add( formLayout, idInpuTextField, getPokemonButton);
     }
 
 }

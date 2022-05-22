@@ -1,5 +1,6 @@
 package com.pokemon.pokemongame.weblogic.webclient.pokemon;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pokemon.pokemongame.weblogic.model.MoveDto;
 import com.pokemon.pokemongame.weblogic.model.PokemonDto;
@@ -21,7 +22,7 @@ public class PokemonClient {
     public static final String API_URL = "https://pokeapi.co/api/v2/pokemon/";
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public PokemonDto getPokemon(String id){
+    public PokemonDto getPokemon(String id) throws JsonProcessingException {
         String url = API_URL + id;
         String json = restTemplate.getForObject(url, String.class);
 
@@ -45,9 +46,8 @@ public class PokemonClient {
                     .weight(response.getWeight())
                     .build();
 
-        }catch (Exception e){
-            System.out.println(e);
-            return null;
+        }catch (JsonProcessingException e){
+            throw e;
         }
 
     }
