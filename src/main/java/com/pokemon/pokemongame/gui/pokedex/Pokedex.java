@@ -1,4 +1,4 @@
-package com.pokemon.pokemongame.gui.profile;
+package com.pokemon.pokemongame.gui.pokedex;
 
 
 import com.pokemon.pokemongame.gui.MainLayout;

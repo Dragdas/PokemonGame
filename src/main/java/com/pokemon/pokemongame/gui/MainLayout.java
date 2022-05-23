@@ -2,7 +2,8 @@ package com.pokemon.pokemongame.gui;
 
 
 import com.pokemon.pokemongame.gui.about.AboutView;
-import com.pokemon.pokemongame.gui.profile.Pokedex;
+import com.pokemon.pokemongame.gui.collection.PokeCollection;
+import com.pokemon.pokemongame.gui.pokedex.Pokedex;
 import com.pokemon.pokemongame.gui.imagelist.ImageListView;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.applayout.AppLayout;
@@ -81,7 +82,7 @@ public class MainLayout extends AppLayout {
         return new MenuItemInfo[]{ //
                 new MenuItemInfo("PokeDEX", "la la-globe", Pokedex.class), //
 
-                //TODO show owned pokemons view
+                new MenuItemInfo("Poke collection","la la-globe", PokeCollection.class),
 
                 new MenuItemInfo("About", "la la-file", AboutView.class), //
 
