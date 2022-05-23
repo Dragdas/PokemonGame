@@ -22,16 +22,92 @@ import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.RouterLink;
 
 
-/**
- * The main view is a top-level placeholder for other views.
- */
-//@StyleSheet("/frontend/main-layout.css")
 @StyleSheet("css/Style.css")
 public class MainLayout extends AppLayout {
 
-    /**
-     * A simple navigation item component, based on ListItem element.
-     */
+    private H1 viewTitle;
+
+    public MainLayout() {
+        setPrimarySection(Section.DRAWER);
+        addToNavbar( true, createHeaderContent());
+        addToDrawer(createDrawerContent());
+    }
+
+    private Component createHeaderContent() {
+        DrawerToggle toggle = new DrawerToggle();
+        toggle.addClassNames("view-toggle");
+        toggle.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
+        toggle.getElement().setAttribute("aria-label", "Menu toggle");
+
+        viewTitle = new H1();
+        viewTitle.addClassNames("view-title");
+
+        Header header = new Header(toggle, viewTitle);
+
+        header.addClassNames("view-header");
+
+    return header;
+    }
+
+    private Component createDrawerContent() {
+        H2 appName = new H2("Pokemon game");
+        appName.addClassNames("app-name");
+
+        com.vaadin.flow.component.html.Section section = new com.vaadin.flow.component.html.Section(appName,
+                createNavigation(), createFooter());
+
+        section.addClassNames("drawer-section");
+        return section;
+    }
+
+    private Nav createNavigation() {
+        Nav nav = new Nav();
+        nav.addClassNames("menu-item-container");
+        nav.getElement().setAttribute("aria-labelledby", "views");
+
+        // Wrap the links in a list; improves accessibility
+        UnorderedList list = new UnorderedList();
+        list.addClassNames("navigation-list");
+        nav.add(list);
+
+        for (MenuItemInfo menuItem : createMenuItems()) {
+            list.add(menuItem);
+
+        }
+        return nav;
+    }
+
+    private MenuItemInfo[] createMenuItems() {
+        return new MenuItemInfo[]{ //
+                new MenuItemInfo("PokeDEX", "la la-globe", Pokedex.class), //
+
+                //TODO show owned pokemons view
+
+                new MenuItemInfo("About", "la la-file", AboutView.class), //
+
+                new MenuItemInfo("Image List", "la la-th-list", ImageListView.class), //
+
+        };
+    }
+
+    private Footer createFooter() {
+        Footer layout = new Footer();
+        layout.addClassNames("footer");
+
+        return layout;
+    }
+
+    @Override
+    protected void afterNavigation() {
+        super.afterNavigation();
+        viewTitle.setText(getCurrentPageTitle());
+    }
+
+    private String getCurrentPageTitle() {
+        PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
+        return title == null ? "" : title.value();
+    }
+
     public static class MenuItemInfo extends ListItem {
 
         private final Class<? extends Component> view;
@@ -69,83 +145,6 @@ public class MainLayout extends AppLayout {
 
     }
 
-    private H1 viewTitle;
 
-    public MainLayout() {
-        setPrimarySection(Section.DRAWER);
-        addToNavbar( true, createHeaderContent());
-        addToDrawer(createDrawerContent());
-    }
 
-    private Component createHeaderContent() {
-        DrawerToggle toggle = new DrawerToggle();
-        toggle.addClassNames("view-toggle");
-        toggle.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
-        toggle.getElement().setAttribute("aria-label", "Menu toggle");
-
-        viewTitle = new H1();
-        viewTitle.addClassNames("view-title");
-
-        Header header = new Header(toggle, viewTitle);
-
-        header.addClassNames("view-header");
-
-    return header;
-    }
-
-    private Component createDrawerContent() {
-        H2 appName = new H2("Pokemon game");
-        appName.addClassNames("app-name");
-
-        com.vaadin.flow.component.html.Section section = new com.vaadin.flow.component.html.Section(appName,
-                createNavigation(), createFooter());
-        section.addClassNames("drawer-section");
-        return section;
-    }
-
-    private Nav createNavigation() {
-        Nav nav = new Nav();
-        nav.addClassNames("menu-item-container");
-        nav.getElement().setAttribute("aria-labelledby", "views");
-
-        // Wrap the links in a list; improves accessibility
-        UnorderedList list = new UnorderedList();
-        list.addClassNames("navigation-list");
-        nav.add(list);
-
-        for (MenuItemInfo menuItem : createMenuItems()) {
-            list.add(menuItem);
-
-        }
-        return nav;
-    }
-
-    private MenuItemInfo[] createMenuItems() {
-        return new MenuItemInfo[]{ //
-                new MenuItemInfo("PokeDEX", "la la-globe", Pokedex.class), //
-
-                new MenuItemInfo("About", "la la-file", AboutView.class), //
-
-                new MenuItemInfo("Image List", "la la-th-list", ImageListView.class), //
-
-        };
-    }
-
-    private Footer createFooter() {
-        Footer layout = new Footer();
-        layout.addClassNames("footer");
-
-        return layout;
-    }
-
-    @Override
-    protected void afterNavigation() {
-        super.afterNavigation();
-        viewTitle.setText(getCurrentPageTitle());
-    }
-
-    private String getCurrentPageTitle() {
-        PageTitle title = getContent().getClass().getAnnotation(PageTitle.class);
-        return title == null ? "" : title.value();
-    }
 }

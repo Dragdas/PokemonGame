@@ -25,8 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @StyleSheet("css/Style.css")
 public class Pokedex extends HorizontalLayout {
 
-    @Autowired
-    private PokemonService pokemonService;
+    private final PokemonService pokemonService;
 
     private Image imageFront;
     private Image imageBack;
@@ -38,7 +37,9 @@ public class Pokedex extends HorizontalLayout {
     private TextField idInputTextField;
     private Button getPokemonButton;
 
-    public Pokedex() {
+    public Pokedex(@Autowired PokemonService pokemonService) {
+
+        this.pokemonService = pokemonService;
 
         initializeFormLayout();
 
