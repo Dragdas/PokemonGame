@@ -84,6 +84,8 @@ public class MainLayout extends AppLayout {
 
                 new MenuItemInfo("Poke collection","la la-globe", PokeCollection.class),
 
+                //TODO dodac view do dodawania userów;
+
                 new MenuItemInfo("About", "la la-file", AboutView.class), //
 
                 new MenuItemInfo("Image List", "la la-th-list", ImageListView.class), //

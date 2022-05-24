@@ -3,7 +3,7 @@ package com.pokemon.pokemongame.gui.pokedex;
 
 import com.pokemon.pokemongame.gui.MainLayout;
 import com.pokemon.pokemongame.weblogic.model.PokemonDto;
-import com.pokemon.pokemongame.weblogic.service.PokemonService;
+import com.pokemon.pokemongame.weblogic.service.PokemonApiService;
 import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.dependency.StyleSheet;
@@ -25,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @StyleSheet("css/Style.css")
 public class Pokedex extends HorizontalLayout {
 
-    private final PokemonService pokemonService;
+    private final PokemonApiService pokemonAPIService;
 
     private Image imageFront;
     private Image imageBack;
@@ -37,9 +37,9 @@ public class Pokedex extends HorizontalLayout {
     private TextField idInputTextField;
     private Button getPokemonButton;
 
-    public Pokedex(@Autowired PokemonService pokemonService) {
+    public Pokedex(@Autowired PokemonApiService pokemonAPIService) {
 
-        this.pokemonService = pokemonService;
+        this.pokemonAPIService = pokemonAPIService;
 
         initializeFormLayout();
 
@@ -87,7 +87,7 @@ public class Pokedex extends HorizontalLayout {
     private void executeGetPokemonButton() {
         try {
             String id = idInputTextField.getValue();
-            PokemonDto pokemon = pokemonService.getPokemon(id);
+            PokemonDto pokemon = pokemonAPIService.getPokemon(id);
 
             imageFront.setSrc(pokemon.getSpriteFront());
             imageBack.setSrc(pokemon.getSpriteBack());

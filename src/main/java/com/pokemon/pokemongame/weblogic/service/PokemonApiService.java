@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class PokemonService {
+public class PokemonApiService {
 
     private final PokemonClient pokemonClient;
 
