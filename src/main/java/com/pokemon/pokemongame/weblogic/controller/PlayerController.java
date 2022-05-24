@@ -1,6 +1,7 @@
 package com.pokemon.pokemongame.weblogic.controller;
 
 
+import com.pokemon.pokemongame.dblogic.player.Player;
 import com.pokemon.pokemongame.weblogic.model.PlayerDto;
 import com.pokemon.pokemongame.weblogic.service.PlayerService;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ public class PlayerController {
     public PlayerDto getPlayerName(@PathVariable(value="id")String id){
 
             //TODO przegadac dlaczego nie mogę zwrócić po prostu Playera zwracanego z DB??
+
             return playerService.getPlayer(Long.parseLong(id));
     }
 

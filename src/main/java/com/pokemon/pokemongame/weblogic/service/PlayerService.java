@@ -1,6 +1,6 @@
 package com.pokemon.pokemongame.weblogic.service;
 
-import com.pokemon.pokemongame.dblogic.player.PlayerDB;
+import com.pokemon.pokemongame.dblogic.player.Player;
 import com.pokemon.pokemongame.dblogic.repository.PlayerRepository;
 import com.pokemon.pokemongame.weblogic.model.PlayerDto;
 import lombok.RequiredArgsConstructor;
@@ -14,12 +14,12 @@ public class PlayerService {
 
 
     public PlayerDto getPlayer(long id){
-        PlayerDB p = playerRepository.getById(id);
+        Player p = playerRepository.getById(id);
 
         return PlayerDto.builder()
                 .id(p.getId())
-                .playerName(p.getPlayerName())
-                .playerPassword(p.getPlayerPassword())
+                .playerName(p.getPlayer_Name())
+                .playerPassword(p.getPlayer_Password())
                 .exp(p.getExp())
                 .lvl(p.getLvl())
                 .build();
