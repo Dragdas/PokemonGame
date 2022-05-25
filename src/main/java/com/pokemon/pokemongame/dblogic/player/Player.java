@@ -1,10 +1,14 @@
 package com.pokemon.pokemongame.dblogic.player;
 
+import com.pokemon.pokemongame.dblogic.pokemon.Pokemon;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +22,10 @@ public class Player {
     private String player_Password;
     private Integer lvl;
     private Integer exp;
+
+    @OneToMany
+    @JoinColumn(name = "player_ID")
+    private List<Pokemon> pokemons;
 
 
 
