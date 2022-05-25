@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
 public class PlayerService {
 
@@ -24,7 +23,7 @@ public class PlayerService {
         if(!playerRepository.existsById(id))
             return null;
 
-        Player p = playerRepository.getById(id);
+        Player p = playerRepository.findPlayerByID(id);
 
         List<PokemonDto> pokemonsOwned = new ArrayList<>();
         List<PokemonDto> pokemonsSeen = new ArrayList<>();
@@ -50,6 +49,7 @@ public class PlayerService {
                 .pokemonsSeen(pokemonsSeen)
                 .build();
     }
+
 
 
 }

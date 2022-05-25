@@ -23,6 +23,7 @@ public class Player {
     private Integer lvl;
     private Integer exp;
 
+    //TODO n+1 rozwiazać
     @OneToMany
     @JoinColumn(name = "PLAYER_ID")
     private List<Pokemon> pokemons;
