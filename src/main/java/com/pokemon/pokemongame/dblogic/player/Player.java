@@ -24,7 +24,7 @@ public class Player {
     private Integer exp;
 
     @OneToMany
-    @JoinColumn(name = "player_ID")
+    @JoinColumn(name = "PLAYER_ID")
     private List<Pokemon> pokemons;
 
 

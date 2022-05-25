@@ -6,11 +6,13 @@ import com.pokemon.pokemongame.weblogic.model.PlayerDto;
 import com.pokemon.pokemongame.weblogic.model.PokemonDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class PlayerService {
 
@@ -19,6 +21,9 @@ public class PlayerService {
 
 
     public PlayerDto getPlayer(long id){
+        if(!playerRepository.existsById(id))
+            return null;
+
         Player p = playerRepository.getById(id);
 
         List<PokemonDto> pokemonsOwned = new ArrayList<>();
@@ -31,7 +36,7 @@ public class PlayerService {
                 if(pokemon.isSeen())
                     pokemonsSeen.add(pokemonApiService.getPokemon( Integer.toString(pokemon.getPokemon_ID()) ));
             }catch (Exception e){
-                System.out.println(e);
+                System.out.println("huston mamy problem ");
             }
         });
 
